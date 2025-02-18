@@ -15,6 +15,7 @@ func (c *CourseSubdomainCommander) New(inputMessage *tgbotapi.Message) {
 	if len(data) != 2 {
 		log.Printf("fail to get data from payload %v", args)
 		c.bot.Send(tgbotapi.NewMessage(inputMessage.Chat.ID, fmt.Sprintf("fail to get data from payload %v", args)))
+		return
 	}
 
 	status, err := c.service.Create(course.Course{
